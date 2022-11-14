@@ -1,4 +1,4 @@
-{%  macro run_this_sql(code='AL') %}
+{% macro run_this_sql(country="Germany") %}
 
     {% set data_today  %}
 
@@ -8,20 +8,19 @@
 
     {% set sql_query  %}
          select to_char(date, 'YYYY') as _year,
-                sum(new_recovered) recovered
+                sum(new_deaths) deaths
         from {{ ref('stg_prepared_source') }}
-        where code = {{"'"}}{{code}}{{"'"}}
+        where country = {{"'"}}{{country}}{{"'"}}
         group by  _year
     {% endset  %}
 
-    {% if execute %}
+{% if execute %}
 
-        {%  set today = run_query(data_today).columns.values() %}
-         {{ log('Date ---- ' ~ today, info=True) }}
-        {%  set result = run_query(sql_query).columns.values() %}
-         {{ log('SQL results ---- ' ~ result, info=True) }}
+{% set today = run_query(data_today).columns.values() %}
+{{ log("Date ---- " ~ today, info=True) }}
+{% set result = run_query(sql_query).columns.values() %}
+{{ log("SQL results ---- " ~ result, info=True) }}
 
-    {%  endif %}
+{% endif %}
 
-{%  endmacro  %}
-
+{% endmacro %}
