@@ -6,24 +6,32 @@ sources:
     schema: public_source
     tables:
       - name: covid_data
-        description: Covid data for all  chosen states
+        description: Covid data for all chosen countries
         columns:
-          - name: updated_at
-            description: Last time the record was updated
-          - name: date
-            description: The actual date of the gathered info
+          - name: country
+            description: Country name
+          - name: confirmed
+            description: Number of confirmed cases on this date
           - name: deaths
             description: Number of deaths caused by covid on this date
+          - name: active
+            description: Number of active covid cases on this date
+          - name: date
+            description: Date of the record
+          - name: new_confirmed
+            description: Number of new confirmed cases on this date
+          - name: new_deaths
+            description: Number of new deaths caused by covid on this date
+          - name: new_active
+            description: Number of new active covid cases on this date
       - name: countries
         description: Country data
         columns:
-          - name: region
-            description: Country region
-          - name: sub-region
-            description: Sub-region of the country
-          - name: intermediate-region
-            description: Intermediate-region of the country
-          - name: alpha-2
-            description: Country code
-
-
+          - name: country
+            description: Country name
+          - name: slug
+            description: Country name in dashed format
+          - name: iso2
+            description: ISO2 country code
+          - name: population
+            description: Country population

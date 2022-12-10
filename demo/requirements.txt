@@ -6,3 +6,8 @@ pycountry
 sqlalchemy
 emoji
 diagrams
+black
+pandas
+matplotlib
+pypopulation
+shandy-sqlfmt[jinjafmt]
